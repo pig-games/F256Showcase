@@ -1,0 +1,9 @@
+RVECTOR_RST	= $fffc
+EXIT_IRQ_HANDLE	= $fe0b
+IRQ		= $fe00
+Boot		= $e000
+RVECTOR_NMI	= $fffa
+RVECTOR_IRQ	= $fffe
+Stack		= $100
+DP		= $02
+NMI		= $ff00
