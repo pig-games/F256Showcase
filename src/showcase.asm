@@ -3,20 +3,20 @@
 showcase       .namespace
 
 TileMapXSize = 54
-TileMapYSize = 22
+TileMapYSize = 15
 
 ; Located in High Memory since Vicky can Reference them directly.
 
 .section tilelayer0
-TileMapLayer0        .include "../tile_data/TopLayer.txm"
+TileMapLayer0        .include "../tile_data/layer1.txm"
 .send
 
 .section tilelayer1
-TileMapLayer1        .include "../tile_data/Paralax1.txm"
+TileMapLayer1        .include "../tile_data/layer2.txm"
 .send
 
 .section tilelayer2
-TileMapLayer2	     .include "../tile_data/Paralax2.txm"
+TileMapLayer2	     .include "../tile_data/layer3.txm"
 .send
 
 ; $012000 - $38FFF (Size: 0x27000) 156K
@@ -43,13 +43,19 @@ start
                 ; Go in Page 1 to Setup LUT
                 jsr system.setIOPage1
         
-                ldx #$00
+                ldx #00
 setLUT0_4_Tiles
                 lda TileMapPalette,x
                 sta vky.LUT0,x
-                inx 
-                cpx #196
+                inx
                 bne setLUT0_4_Tiles
+setLUT0_4_Tiles2
+                lda TileMapPalette+$100,x
+                sta vky.LUT0+$100,x
+                inx
+                cpx #24
+                bne setLUT0_4_Tiles2
+                
                 ; Go in Page 0 to program the rest
                 jsr system.SetIOPage0
 
@@ -180,25 +186,9 @@ joystickDoneNow
                 beq backwardX
 
                 lda io.joy.VAL
-                and #$02
-                cmp #$00
-                beq forwardY
-
-                lda io.joy.VAL
                 and #$01
                 cmp #$00
                 bne joystickDone
-                ;backwardY
-                lda vky.SCROLL_Y_CNT
-                cmp #$00
-                beq joystickDone
-                dec vky.SCROLL_Y_CNT
-                lda vky.SCROLL_Y_CNT
-                sta vky.tile.T0_MAP_Y_POS_L
-         ;       lsr A
-                sta vky.tile.T1_MAP_Y_POS_L
-          ;      lsr A
-                sta vky.tile.T2_MAP_Y_POS_L
 
 joystickDone
                 lda #$00
@@ -232,18 +222,5 @@ backwardX
                 sta vky.tile.T2_MAP_X_POS_L
                 bra joystickDone
 
-forwardY      
-                lda vky.SCROLL_Y_CNT
-                cmp #$40
-                beq joystickDone     
-                inc vky.SCROLL_Y_CNT
-                lda vky.SCROLL_Y_CNT
-                sta vky.tile.T0_MAP_Y_POS_L
-                sta vky.tile.T1_MAP_Y_POS_L
-        ;        lsr A
-                sta vky.tile.T2_MAP_Y_POS_L
-                lda #$00
-                sta io.joy.CNT_0        
-                rts 
 .send        ; end section showcase
 .endn        ; end namespace showcase

@@ -30,7 +30,7 @@ init		.namespace
                 sta vky.border.CTRL_REG
                 lda #$20
                 sta vky.BACKGROUND_COLOR_B
-                sta vky.BACKGROUND_COLOR_G
+                stz vky.BACKGROUND_COLOR_G
                 sta vky.BACKGROUND_COLOR_R
 
                 jsr system.setIOPage0

@@ -16,7 +16,7 @@ tinyVkyInit
             	lda #16
             	sta vky.border.X_SIZE
             	sta vky.border.Y_SIZE
-            	lda #vky.cursor.ENABLE | vky.cursor.TURNOFF_FLASH
+            	lda #0 ;vky.cursor.ENABLE | vky.cursor.TURNOFF_FLASH
             	sta vky.cursor.TXT_CTRL_REG
             	lda #7
             	sta vky.cursor.TXT_CHAR_REG

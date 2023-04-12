@@ -22,9 +22,13 @@ SRC = 	src/main.asm \
 BINS =  tile_data/tileset.bin \
   	    tile_data/tileset.pal.bin		
 
+MAPS =  tile_data/layer1.txm \
+		tile_data/layer2.txm \
+		tile_data/layer3.txm
+		
 OPTS = 	--long-address -b -fc
 
-$(BLD_NAME): $(SRC) $(BINS)
+$(BLD_NAME): $(SRC) $(BINS) $(MAPS)
 		64tass $(OPTS) $(SRC) -o $@ --list $(basename $@).lst --labels=$(basename $@).lbl
 
 up: 	$(BLD_NAME)

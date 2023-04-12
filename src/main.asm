@@ -22,7 +22,7 @@ Boot 		.dsection boot
 * = $E800
 		.dsection data
 
-* = $EF00
+* = $EE00
 		.dsection tilesetpalette
 
 * = $F000	
