@@ -53,7 +53,7 @@ setLUT0_4_Tiles2
                 lda TileMapPalette+$100,x
                 sta vky.LUT0+$100,x
                 inx
-                cpx #24
+                cpx #32
                 bne setLUT0_4_Tiles2
                 
                 ; Go in Page 0 to program the rest
