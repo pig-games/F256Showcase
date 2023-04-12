@@ -21,7 +21,7 @@ init		.namespace
                 sta $D6E0           ; We don't need the mouse      
 
                 ; VICKY - Bitmap Code test
-                lda #( vky.mctrl.GRAPH_MODE_EN  | vky.mctrl.TILEmAP_EN | vky.mctrl.TEXT_MODE_EN | vky.mctrl.TEXT_OVERLAY )
+                lda #( vky.mctrl.GRAPH_MODE_EN  | vky.mctrl.TILEMAP_EN | vky.mctrl.TEXT_MODE_EN | vky.mctrl.TEXT_OVERLAY )
                 sta vky.mctrl.REG_L
                 
                 lda #$00

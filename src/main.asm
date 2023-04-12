@@ -41,10 +41,10 @@ NMI		.dsection nmi
 		.dsection tilelayer0
 
 * = $010A00
-		.dsection tilelayer1
+		.dsection tilelayer2
 
 * = $011400
-		.dsection tilelayer2
+		.dsection tilelayer1
 
 * = $012000
 		.dsection tilesetdata

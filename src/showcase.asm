@@ -200,6 +200,7 @@ forwardX
                 cmp #$FE
                 beq joystickDone
                 inc vky.SCROLL_X_CNT
+                inc vky.SCROLL_X_CNT
 
                 lda vky.SCROLL_X_CNT
                 sta vky.tile.T0_MAP_X_POS_L
@@ -213,6 +214,7 @@ backwardX
                 lda vky.SCROLL_X_CNT
                 cmp #$00
                 beq joystickDone
+                dec vky.SCROLL_X_CNT
                 dec vky.SCROLL_X_CNT
                 lda vky.SCROLL_X_CNT
                 sta vky.tile.T0_MAP_X_POS_L
