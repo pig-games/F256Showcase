@@ -164,7 +164,7 @@ BgColorLut
 .align 16
 Text2Display    .text "                                                                                "
                 .text "                ****         F256 Jr Showcase          ****                     "
-                .text "                            512K RAM 512K Flash                                 "
+                .text "                            Core Specifications                                 "
                 .text $00
 
 FailedKbd       .text "THE PS2 INIT FAILED", $00
