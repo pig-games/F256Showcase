@@ -310,7 +310,4 @@ dma        .namespace
         DMA_RESERVED_8      = $DF17
 .endn ; end namespace dma
 
-SCROLL_X_CNT     = $54
-SCROLL_Y_CNT     = $56
-
 .endn ; end namespace vky

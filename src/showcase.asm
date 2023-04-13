@@ -2,8 +2,10 @@
 
 showcase       .namespace
 
-TileMapXSize = 54
+TileMapXSize = 82
 TileMapYSize = 15
+
+musicPlay = Music + 3
 
 ; Located in High Memory since Vicky can Reference them directly.
 
@@ -30,6 +32,15 @@ TileMapPalette	     .binary "../tile_data/tileset.pal.bin"
 .send
 
 ; Start of actual showcase code
+
+.section dp
+L0ScrollXL      .byte 0
+L0ScrollXH      .byte 0
+L1ScrollXL      .byte 0
+L1ScrollXH      .byte 0
+L2ScrollXL      .byte 0
+L2ScrollXH      .byte 0
+.send
 
 .section        showcase
 
@@ -161,7 +172,7 @@ InterruptHandlerJoystick:
                 lda interrupt.PENDING_REG0
                 and #interrupt.JR0_INT00_SOF
                 sta interrupt.PENDING_REG0
-
+                jsr musicPlay
                 lda io.joy.VIA0_IRB    ; Read VIA Port B to get Joystick Value
                 and #$1F        ; Remove Unwanted bits
                 cmp #$1F        ; Any movement at all?
@@ -196,33 +207,78 @@ joystickDone
                 rts 
 
 forwardX      
-                lda vky.SCROLL_X_CNT
-                cmp #$FE
-                beq joystickDone
-                inc vky.SCROLL_X_CNT
-                inc vky.SCROLL_X_CNT
+                ;cmp #$FE
+                ;beq joystickDone
 
-                lda vky.SCROLL_X_CNT
+                lda L0ScrollXL
+                clc
+                adc #3
+                sta L0ScrollXL
                 sta vky.tile.T0_MAP_X_POS_L
-                lsr A
+                lda L0ScrollXH
+                adc #0
+                sta L0ScrollXH
+                sta vky.tile.T0_MAP_X_POS_H
+
+                lda L1ScrollXL
+                clc
+                adc #2
+                sta L1ScrollXL
                 sta vky.tile.T1_MAP_X_POS_L
-                lsr A
+                lda L1ScrollXH
+                adc #0
+                sta L1ScrollXH
+                sta vky.tile.T1_MAP_X_POS_H
+
+                lda L2ScrollXL
+                clc
+                adc #1
+                sta L2ScrollXL
                 sta vky.tile.T2_MAP_X_POS_L
+                lda L2ScrollXH
+                adc #0
+                sta L2ScrollXH
+                sta vky.tile.T2_MAP_X_POS_H
+
                 bra joystickDone
 
 backwardX     
-                lda vky.SCROLL_X_CNT
+                lda L0ScrollXH
+                bne scroll
+                lda L0ScrollXL
                 cmp #$00
                 beq joystickDone
-                dec vky.SCROLL_X_CNT
-                dec vky.SCROLL_X_CNT
-                lda vky.SCROLL_X_CNT
+scroll
+                lda L0ScrollXL
+                sec
+                sbc #3
+                sta L0ScrollXL
                 sta vky.tile.T0_MAP_X_POS_L
-                lsr A
+                lda L0ScrollXH
+                sbc #0
+                sta L0ScrollXH
+                sta vky.tile.T0_MAP_X_POS_H
+
+                lda L1ScrollXL
+                sec
+                sbc #2
+                sta L1ScrollXL
                 sta vky.tile.T1_MAP_X_POS_L
-                lsr A
+                lda L1ScrollXH
+                sbc #0
+                sta L1ScrollXH
+                sta vky.tile.T1_MAP_X_POS_H
+
+                lda L2ScrollXL
+                sec
+                sbc #1
+                sta L2ScrollXL
                 sta vky.tile.T2_MAP_X_POS_L
-                bra joystickDone
+                lda L2ScrollXH
+                sbc #0
+                sta L2ScrollXH
+                sta vky.tile.T2_MAP_X_POS_H
+                jmp joystickDone
 
 .send        ; end section showcase
 .endn        ; end namespace showcase

@@ -30,7 +30,7 @@ MAPS =  tile_data/layer1.txm \
 		
 OPTS = 	--long-address -b -fc
 
-$(BLD_NAME): $(SRC) $(tileset) $(MAPS)
+$(BLD_NAME): $(SRC) $(BINS) $(MAPS)
 		64tass $(OPTS) $(SRC) -o $@ --list $(basename $@).lst --labels=$(basename $@).lbl
 
 up: 	$(BLD_NAME)

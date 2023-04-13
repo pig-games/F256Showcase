@@ -1,10 +1,11 @@
 init		.namespace
 .section init
 ; --- LET'S BEGIN --- 
-		jsr system.setIOPage0		; The Color LUT for the Text Mode is in Page 0
+				jsr system.setIOPage0		; The Color LUT for the Text Mode is in Page 0
                 jsr display.tinyVkyInit
                 jsr audio.initCodec		; Make sure to setup the CODEC Very early
                 jsr audio.mutePSG
+				jsr Music
 		jsr display.initTextLUT	; Init the Text Color Table                      
                 ; Set the Backgroud Color
 		jsr system.setIOPage3		;

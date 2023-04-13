@@ -3,6 +3,7 @@ EXIT_IRQ_HANDLE	= $fe0b
 IRQ		= $fe00
 Boot		= $e000
 RVECTOR_NMI	= $fffa
+Music		= $c000
 RVECTOR_IRQ	= $fffe
 Stack		= $100
 DP		= $02

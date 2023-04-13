@@ -12,8 +12,11 @@ DP		.dsection dp
 Stack		.dsection stack
 		.fill $100
 
+* = $C000
+Music	.dsection music
+
 * = $E000
-Boot 		.dsection boot
+Boot 	.dsection boot
 		.dsection init
 		.dsection system
 		.dsection display
@@ -49,6 +52,10 @@ NMI		.dsection nmi
 * = $012000
 		.dsection tilesetdata
 
+.section	music
+	.binary "../music/odeto64.bin"
+.send
+
 .section	irq
                 pha
                 phx
@@ -66,6 +73,7 @@ EXIT_IRQ_HANDLE
 .send
 
 .section	nmi
+rti
 .send
 
 ;
