@@ -12,7 +12,7 @@ DP		.dsection dp
 Stack		.dsection stack
 		.fill $100
 
-* = $C000
+* = $1000
 Music	.dsection music
 
 * = $E000
