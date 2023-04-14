@@ -2,7 +2,7 @@
 
 showcase       .namespace
 
-TileMapXSize = 82
+TileMapXSize = 102
 TileMapYSize = 15
 
 musicPlay = Music + 3
@@ -10,21 +10,21 @@ musicPlay = Music + 3
 ; Located in High Memory since Vicky can Reference them directly.
 
 .section tilelayer0
-TileMapLayer0        .include "../tile_data/layer1.txm"
+        .include "../tile_data/layer1.txm"
 .send
 
 .section tilelayer1
-TileMapLayer1        .include "../tile_data/layer2.txm"
+        .include "../tile_data/layer2.txm"
 .send
 
 .section tilelayer2
-TileMapLayer2	     .include "../tile_data/layer3.txm"
+         .include "../tile_data/layer3.txm"
 .send
 
-; $012000 - $38FFF (Size: 0x27000) 156K
+; $013000 - $39FFF (Size: 0x27000) 156K
 
 .section tilesetdata
-TileSetData          .binary "../tile_data/tileset.bin"
+          .binary "../tile_data/tileset.bin"
 .send
 
 .section tilesetpalette
@@ -71,23 +71,27 @@ setLUT0_4_Tiles2
                 jsr system.SetIOPage0
 
                 ; Set the Tile Layer Map 0 Pointer: $10000
-                stz vky.tile.T0_START_ADDY_L
-                stz vky.tile.T0_START_ADDY_M
-                lda #$01
+                lda #<TileMapLayer0
+                sta vky.tile.T0_START_ADDY_L
+                lda #>TileMapLayer0
+                sta vky.tile.T0_START_ADDY_M
+                lda #`TileMapLayer0
                 sta vky.tile.T0_START_ADDY_H
 
                 ; Set the Tile Layer Map 1 Pointer: $10A00
-                stz vky.tile.T1_START_ADDY_L
-                lda #$0A
+                lda #<TileMapLayer1
+                sta vky.tile.T1_START_ADDY_L
+                lda #>TileMapLayer1
                 sta vky.tile.T1_START_ADDY_M
-                lda #$01
+                lda #`TileMapLayer0
                 sta vky.tile.T1_START_ADDY_H
 
                 ; Set the Tile Layer Map 2 Pointer: $11400
-                stz vky.tile.T2_START_ADDY_L
-                lda #$14
+                lda #<TileMapLayer2
+                sta vky.tile.T2_START_ADDY_L
+                lda #>TileMapLayer2
                 sta vky.tile.T2_START_ADDY_M
-                lda #$01
+                lda #`TileMapLayer2
                 sta vky.tile.T2_START_ADDY_H
 
                 ;Now Set the Size of the MAP itself
@@ -128,26 +132,26 @@ setLUT0_4_Tiles2
 
                 ; Now let's setup the different Tile Set Graphics Location
                 ; We are in 16x16 Mode, so 1x TileSet is 65536bytes. (64K)
-                ; Tile Set 0   : $012000
-                lda #$00
+                ; Tile Set 0   : $013000
+                lda #<TileSet0Data
                 sta vky.tile.GRP_ADDY0_L
-                lda #$20
+                lda #>TileSet0Data
                 sta vky.tile.GRP_ADDY0_M
-                lda #$01    ; The location of the TileSet if $B80000
+                lda #`TileSet0Data
                 sta vky.tile.GRP_ADDY0_H
-                ; tile Set 1   : $022000
-                lda #$00
+                ; tile Set 1   : $023000
+                lda #<TileSet1Data
                 sta vky.tile.GRP_ADDY1_L
-                lda #$20
+                lda #>TileSet1Data
                 sta vky.tile.GRP_ADDY1_M
-                lda #$02    ; The location of the TileSet if $B80000
+                lda #`TileSet1Data
                 sta vky.tile.GRP_ADDY1_H
-                ; tile Set 2   : $032000
-                lda #$00
+                ; tile Set 2   : $043000
+                lda #<TileSet2Data
                 sta vky.tile.GRP_ADDY2_L
-                lda #$20
+                lda #>TileSet2Data
                 sta vky.tile.GRP_ADDY2_M
-                lda #$03    ; The location of the TileSet if $B80000
+                lda #`TileSet2Data
                 sta vky.tile.GRP_ADDY2_H        
 
                 ; let's setup the attributes for each graphic sets
@@ -187,12 +191,12 @@ joystickNotDone
 joystickDoneNow
                 lda io.joy.VIA0_IRB
                 sta io.joy.VAL
-                and #$08              ; Check what value is cleared
+                and #$04              ; Check what value is cleared
                 cmp #$00
                 beq forwardX
 
                 lda io.joy.VAL
-                and #$04
+                and #$08
                 cmp #$00
                 beq backwardX
 
@@ -212,7 +216,7 @@ forwardX
 
                 lda L0ScrollXL
                 clc
-                adc #3
+                adc #4
                 sta L0ScrollXL
                 sta vky.tile.T0_MAP_X_POS_L
                 lda L0ScrollXH
@@ -251,7 +255,7 @@ backwardX
 scroll
                 lda L0ScrollXL
                 sec
-                sbc #3
+                sbc #4
                 sta L0ScrollXL
                 sta vky.tile.T0_MAP_X_POS_L
                 lda L0ScrollXH
