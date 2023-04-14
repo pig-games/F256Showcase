@@ -40,17 +40,23 @@ NMI		.dsection nmi
 * = $FFFA
 		.dsection ivec
 
-* = $010000
+TileMapLayer0 = $010000
+* = TileMapLayer0
 		.dsection tilelayer0
 
-* = $010A00
+TileMapLayer1 = $011000
+* = TileMapLayer1
 		.dsection tilelayer2
 
-* = $011400
+TileMapLayer2 = $012000
+* = TileMapLayer2
 		.dsection tilelayer1
 
-* = $012000
+TileSet0Data = $013000
+* = TileSet0Data
 		.dsection tilesetdata
+TileSet1Data = TileSet0Data + $10000
+TileSet2Data = TileSet1Data + $10000
 
 .section	music
 	.binary "../music/odeto64.bin"

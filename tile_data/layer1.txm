@@ -1,24 +1,24 @@
 .align 4
 TILE_MAP_TOP_LAYER
 .encode tilescii.upper
-.text "                                                                                                                                                                    "
-.text "  C P U : 6 5 C 0 2   @   6 , 2 9 M H Z                                                                                                                     4 3 2 1 "
-.text "  R A M : 5 1 2   K B                                                                                                                                               "
-.text "  F L A S H : 5 1 2   K B                                                                                                                                           "
-.text "  S D - C A R D   S L O T                                                                                                                                           "
-.text "  J O Y : 2 * A T A R I , 4 * ( S ) N E S                                                                                                                           "
-.text "  P S 2 : K E Y B O A R D / M O U S E                                                                                                                               "
-.text "  C 6 4   K E Y B O A R D                                                                                                                                           "
-.text "  I E C   P O R T   ( C B M   C O M P . )                                                                                                                           "
-.text "  U S B   D E B U G   P O R T                                                                                                                                       "
-.text "  D V I   D I S P L A Y   P O R T                                                                                                                                   "
-.text "  C A R T R I D G E   P O R T                                                                                                                                       "
-.text "  H E A D P H O N E + S T E R . J A C K                                                                                                                             "
-.text "  T I N Y V I C K Y   C H I P S E T                                                                                                                                 "
+.text "                                                                                                                                                                                                            "
+.text "                                          C P U : 6 5 C 0 2   @   6 , 2 9 M H Z                                                                                                                     4 3 2 1 "
+.text "                                          R A M : 5 1 2   K B                                                                                                                                               "
+.text "                                          F L A S H : 5 1 2   K B                                                                                                                                           "
+.text "                                          S D - C A R D   S L O T                                                                                                                                           "
+.text "                                          J O Y : 2 * A T A R I , 4 * ( S ) N E S                                                                                                                           "
+.text "                                          P S 2 : K E Y B O A R D / M O U S E                                                                                                                               "
+.text "                                          C 6 4   K E Y B O A R D                                                                                                                                           "
+.text "                                          I E C   P O R T   ( C B M   C O M P . )                                                                                                                           "
+.text "                                          U S B   D E B U G   P O R T                                                                                                                                       "
+.text "                                          D V I   D I S P L A Y   P O R T                                                                                                                                   "
+.text "                                          C A R T R I D G E   P O R T                                                                                                                                       "
+.text "                                          H E A D P H O N E + S T E R . J A C K                                                                                                                             "
+.text "                                          T I N Y V I C K Y   C H I P S E T                                                                                                                                 "
 .word 10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 .endencode
 
-
+;"                                       "
 
 
 ;.word 0,0,0,0,80,81,82,83,84,85,86,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
