@@ -2,7 +2,7 @@
 
 showcase       .namespace
 
-TileMapXSize = 102
+TileMapXSize = 142
 TileMapYSize = 15
 
 musicPlay = Music + 3
@@ -226,7 +226,7 @@ forwardX
 
                 lda L1ScrollXL
                 clc
-                adc #2
+                adc #3
                 sta L1ScrollXL
                 sta vky.tile.T1_MAP_X_POS_L
                 lda L1ScrollXH
@@ -265,7 +265,7 @@ scroll
 
                 lda L1ScrollXL
                 sec
-                sbc #2
+                sbc #3
                 sta L1ScrollXL
                 sta vky.tile.T1_MAP_X_POS_L
                 lda L1ScrollXH

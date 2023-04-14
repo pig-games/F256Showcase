@@ -1,26 +1,40 @@
 .align 4
 TILE_MAP_TOP_LAYER
 .encode tilescii.upper
-.text "                                                                                                                                                                                                            "
-.text "                                          C P U : 6 5 C 0 2   @   6 , 2 9 M H Z                                                                                                                     4 3 2 1 "
-.text "                                          R A M : 5 1 2   K B                                                                                                                                               "
-.text "                                          F L A S H : 5 1 2   K B                                                                                                                                           "
-.text "                                          S D - C A R D   S L O T                                                                                                                                           "
-.text "                                          J O Y : 2 * A T A R I , 4 * ( S ) N E S                                                                                                                           "
-.text "                                          P S 2 : K E Y B O A R D / M O U S E                                                                                                                               "
-.text "                                          C 6 4   K E Y B O A R D                                                                                                                                           "
-.text "                                          I E C   P O R T   ( C B M   C O M P . )                                                                                                                           "
-.text "                                          U S B   D E B U G   P O R T                                                                                                                                       "
-.text "                                          D V I   D I S P L A Y   P O R T                                                                                                                                   "
-.text "                                          C A R T R I D G E   P O R T                                                                                                                                       "
-.text "                                          H E A D P H O N E + S T E R . J A C K                                                                                                                             "
-.text "                                          T I N Y V I C K Y   C H I P S E T                                                                                                                                 "
-.word 10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+.text "                                                                                                                                                                   *                                                                                                                        "
+.text "                                                                                                G R A P H I C S                                                    *                                                        S O U N D                               S O U N D               "
+.text "                                              2 * A T A R I   J O Y P O R T                                                             S O U N D                  *      M U L T I T A S K I N G                                                                                           "
+.text "                R E A L                         4 * ( S ) N E S   J O Y P O R T             3 2 0 * 2 4 0 @ 6 0 H Z                                                *              M I C R O K E R N E L             2 * P S G   ( F P G A )                 2 * P S G   ( F P G A )         "
+.text "    6 5 C 0 2   @   6 , 2 9 M H Z                                                           3 2 0 * 2 0 0 @ 7 0 H Z               2 * P S G   ( F P G A )          *                                              3   V O I C E   S T E R E O             3   V O I C E   S T E R E O       "
+.text "                                                    P S / 2   K E Y B O A R D /                                                 3   V O I C E   S T E R E O        *      D O S                                     6   V O I C E   M O N O                 6   V O I C E   M O N O         "
+.text "        5 1 2 K   R A M                                       M O U S E                     2 5 6 C O L / 4 C L U T               6   V O I C E   M O N O          *                                                                                                                        "
+.text "                                                        C 6 4   K E Y B O A R D                                                                                    *      S U P E R B A S I C                                                                                               "
+.text "      5 1 2 K   F L A S H                                                                       3 L A Y E R S                                                      *                                                2 * S I D   S O C K E T                 2 * S I D   S O C K E T         "
+.text "                                                    I E C   S E R I A L                   B I T M A P   /   T I L E S             2 * S I D   S O C K E T          *      F O E N I X   I D E                                                                                               "
+.text "      C U S T O M   C H I P S E T :                                                                                                                                *                                              R C A   S T E R E O   O U T             R C A   S T E R E O   O U T       "
+.text "                                                U S B   D E B U G   P O R T                   6 4   S P R I T E S               R C A   S T E R E O   O U T        *      C A L Y P S I   C / A S M                                                                                         "
+.text "          T I N Y V I C K Y ( F P G A )       F P G A   P R O G   P O R T                                                                                          *                                              H E A D P H O N E   O U T               H E A D P H O N E   O U T         "
+.text "                                                  U A R T   O R   W I F I                     D M A   E N G I N E               H E A D P H O N E   O U T          *      F 2 5 6   E M U L A T O R                                                                                         "
+.text "                                                                                                                                                                   *                                                                                                                        "
 .endencode
 
-;"                                       "
-
-
+;     "                                        ""                                        ""                                        ""                                        ""                                        "
+;     "                                        ""                                        ""            G R A P H I C S             ""               S O U N D                ""               S O U N D                "
+;     "                                        ""      2 x A T A R I   J O Y P O R T     ""                                        ""                                        ""                                        "
+;     "                R E A L                 ""      4 x ( N ) E S   J O Y P O R T     ""        3 2 0 * 2 4 0 @ 6 0 H Z         ""        2 * P S G   ( F P G A )         ""        2 * P S G   ( F P G A )         "
+;     "      6 5 C 0 2   @   6 , 2 9 M H Z     ""                                        ""        3 2 0 * 2 0 0 @ 7 0 H Z         ""      3   V O I C E   S T E R E O       ""      3   V O I C E   S T E R E O       "
+;     "                                        ""      P S / 2   K E Y B O A R D /       ""                                        ""        6   V O I C E   M O N O         ""        6   V O I C E   M O N O         "
+;     "            5 1 2 K   R A M             ""                M O U S E               ""        2 5 6 C O L / 4 C L U T         ""                                        ""                                        "
+;     "                                        ""        C 6 4   K E Y B O A R D         ""                                        ""                                        ""                                        "
+;     "          5 1 2 K   F L A S H           ""                                        ""            3 L A Y E R S               ""        2 * S I D   S O C K E T         ""        2 * S I D   S O C K E T         "
+;     "                                        ""      I E C   S E R I A L               ""      B I T M A P   /   T I L E S       ""                                        ""                                        "
+;     "      C U S T O M   C H I P S E T :     ""                                        ""                                        ""      R C A   S T E R E O   O U T       ""      R C A   S T E R E O   O U T       "
+;     "                                        ""      U S B   D E B U G   P O R T       ""          6 4   S P R I T E S           ""                                        ""                                        "
+;     "      T I N Y V I C K Y ( F P G A )     ""                                        ""                                        ""      H E A D P H O N E   O U T         ""      H E A D P H O N E   O U T         "
+;     "                                        ""        U A R T   O R   W I F I         ""          D M A   E N G I N E           ""                                        ""                                        "
+;     "                                        ""                                        ""                                        ""                                        ""                                        "
+;     "                                        ""                                        ""                                        ""                                        ""                                        "
+;     "^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ""^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ""^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ""^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ""^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ "
 ;.word 0,0,0,0,80,81,82,83,84,85,86,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 ;.word 0,0,0,0,87,88,89,90,91,92,93,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 ;.word 0,0,0,0,94,95,96,97,98,99,100,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

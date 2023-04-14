@@ -46,11 +46,11 @@ TileMapLayer0 = $010000
 
 TileMapLayer1 = $011000
 * = TileMapLayer1
-		.dsection tilelayer2
+		.dsection tilelayer1
 
 TileMapLayer2 = $012000
 * = TileMapLayer2
-		.dsection tilelayer1
+		.dsection tilelayer2
 
 TileSet0Data = $013000
 * = TileSet0Data
