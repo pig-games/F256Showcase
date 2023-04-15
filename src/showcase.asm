@@ -2,7 +2,7 @@
 
 showcase       .namespace
 
-TileMapXSize = 142
+TileMapXSize = 152
 TileMapYSize = 15
 
 musicPlay = Music + 3
@@ -64,7 +64,7 @@ setLUT0_4_Tiles2
                 lda TileMapPalette+$100,x
                 sta vky.LUT0+$100,x
                 inx
-                cpx #32
+                cpx #$FC
                 bne setLUT0_4_Tiles2
                 
                 ; Go in Page 0 to program the rest
