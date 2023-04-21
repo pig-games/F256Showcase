@@ -40,6 +40,9 @@ L1ScrollXL      .byte 0
 L1ScrollXH      .byte 0
 L2ScrollXL      .byte 0
 L2ScrollXH      .byte 0
+L2VXLO          .byte 0
+L2VXHI          .byte 0
+L2SLINE         .byte 0
 .send
 
 .section        showcase
@@ -168,21 +171,54 @@ setLUT0_4_Tiles2
                 lda #vky.tile.Enable
                 sta vky.tile.T2_CONTROL_REG  ; Enable Layer2
 
+                ; set top line for parallax scroll
+                ;lda #200
+                stz vky.line_irq.Y_POS_LO
                 rts
 
 InterruptHandlerJoystick:
 
                 ; Clear Interrupt Pending Register for SOF
-                lda interrupt.PENDING_REG0
-                and #interrupt.JR0_INT00_SOF
+                lda #interrupt.JR0_INT00_SOF
+                bit interrupt.PENDING_REG0
+                beq +
                 sta interrupt.PENDING_REG0
                 jsr musicPlay
+
                 lda io.joy.VIA0_IRB    ; Read VIA Port B to get Joystick Value
                 and #$1F        ; Remove Unwanted bits
                 cmp #$1F        ; Any movement at all?
                 bne joystickNotDone
                 lda #$00
                 sta io.joy.CNT_0
+        +
+                lda #interrupt.JR0_INT01_SOL
+                bit interrupt.PENDING_REG0
+                beq +
+        ; handle SOL
+                sta interrupt.PENDING_REG0
+                lda L2SLINE
+                cmp #200
+                bcs parallax
+                
+                lda L2SCROLLXL
+                sta vky.tile.T2_MAP_X_POS_L
+                lda L2SCROLLXH
+                sta vky.tile.T2_MAP_X_POS_H
+                lda #200
+                sta L2SLINE
+                sta vky.line_irq.Y_POS_LO
+                rts
+parallax
+                cmp #240
+                bcs endparallax
+                lda L2SCROLLXL
+                ;lsr a
+                stz vky.tile.T2_MAP_X_POS_L
+                rts
+endparallax
+                stz L2SLINE                
+        +
                 rts 
 
 joystickNotDone
@@ -236,13 +272,13 @@ forwardX
 
                 lda L2ScrollXL
                 clc
-                adc #1
+                adc #1;L2VX
                 sta L2ScrollXL
-                sta vky.tile.T2_MAP_X_POS_L
+                ; sta vky.tile.T2_MAP_X_POS_L
                 lda L2ScrollXH
                 adc #0
                 sta L2ScrollXH
-                sta vky.tile.T2_MAP_X_POS_H
+                ; sta vky.tile.T2_MAP_X_POS_H
 
                 bra joystickDone
 

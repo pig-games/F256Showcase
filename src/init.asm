@@ -46,7 +46,7 @@ init		.namespace
                 ; Enable the SOF interrupt
                 cli 
                 lda interrupt.MASK_REG0
-                and #~interrupt.JR0_INT00_SOF
+                and #~(interrupt.JR0_INT00_SOF | interrupt.JR0_INT01_SOL)
                 sta interrupt.MASK_REG0
 DONE	        JMP DONE
 
